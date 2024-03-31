@@ -1,4 +1,24 @@
 package kenny.lambda.cart;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CartService {
+    private static List<Sku> cartSkuList = new ArrayList<Sku>() {
+        {
+            add(new Sku(654032, "drone", 4999.00, 1, 4999.00, SkuCategoryEnum.ELECTRONICS));
+            add(new Sku(642934, "VR", 2299.00, 1, 2299.0000, SkuCategoryEnum.ELECTRONICS));
+            add(new Sku(645321, "Shirt", 409.00, 3, 1227.00, SkuCategoryEnum.CLOTHING));
+            add(new Sku(654327, "Jeans", 528.00, 1, 528.00, SkuCategoryEnum.CLOTHING));
+            add(new Sku(675489, "Treadmill", 2699.00, 1, 2699.00, SkuCategoryEnum.SPORTS));
+            add(new Sku(644564, "Java Programming Logic", 79.80, 1, 79.80, SkuCategoryEnum.BOOKS));
+            add(new Sku(678678, "Java Core Tech", 149.00, 1, 149.00, SkuCategoryEnum.BOOKS));
+            add(new Sku(697894, "Algo", 78.20, 1, 78.20, SkuCategoryEnum.BOOKS));
+            add(new Sku(696968, "TensorFlow Master Course", 85.10, 1, 85.10, SkuCategoryEnum.BOOKS));
+        }
+    };
+
+    public  static List<Sku> getCartSkuList() {
+        return cartSkuList;
+    }
 }
