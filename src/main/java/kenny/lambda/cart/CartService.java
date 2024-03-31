@@ -21,4 +21,19 @@ public class CartService {
     public  static List<Sku> getCartSkuList() {
         return cartSkuList;
     }
+
+    /**
+     *  Version 1.0.0
+     * @param cartSkuList
+     * @return
+     */
+    public List<Sku> filterElectronicsSkus(List<Sku> cartSkuList) {
+        List<Sku> result = new ArrayList<Sku>();
+        for (Sku sku:cartSkuList             ) {
+            if (SkuCategoryEnum.ELECTRONICS.equals(sku.getSkuCategory())) {
+                result.add(sku);
+            }
+        }
+        return result;
+    }
 }
