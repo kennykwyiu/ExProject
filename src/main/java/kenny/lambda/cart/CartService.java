@@ -23,7 +23,7 @@ public class CartService {
     }
 
     /**
-     *  Version 1.0.0
+     * Version 1.0.0
      * @param cartSkuList
      * @return
      */
@@ -31,6 +31,22 @@ public class CartService {
         List<Sku> result = new ArrayList<Sku>();
         for (Sku sku:cartSkuList             ) {
             if (SkuCategoryEnum.ELECTRONICS.equals(sku.getSkuCategory())) {
+                result.add(sku);
+            }
+        }
+        return result;
+    }
+
+    /**
+     * Version 2.0.0
+     * @param cartSkuList
+     * @param categoryEnum
+     * @return
+     */
+    public static  List<Sku> filterSkusByCategory(List<Sku> cartSkuList, SkuCategoryEnum categoryEnum) {
+        List<Sku> result = new ArrayList<Sku>();
+        for (Sku sku:cartSkuList             ) {
+            if (categoryEnum.equals(sku.getSkuCategory())) {
                 result.add(sku);
             }
         }
