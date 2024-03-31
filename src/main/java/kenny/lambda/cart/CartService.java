@@ -52,4 +52,28 @@ public class CartService {
         }
         return result;
     }
+
+    /**
+     * Version 3.0.0
+     * @param cartSkuList
+     * @param categoryEnum
+     * @param totalPrice
+     * @param categoryOrPrice - true: category, false: totalPrice
+     * @return
+     */
+    public static  List<Sku> filterSkus(List<Sku> cartSkuList,
+                                                  SkuCategoryEnum categoryEnum,
+                                                  Double totalPrice,
+                                                  Boolean categoryOrPrice) {
+        List<Sku> result = new ArrayList<Sku>();
+        for (Sku sku:cartSkuList             ) {
+            if ( categoryOrPrice && categoryEnum.equals(sku.getSkuCategory())
+                    ||
+                    !categoryOrPrice && sku.getTotalPrice() > totalPrice) {
+                result.add(sku);
+            }
+        }
+        return result;
+    }
+
 }
