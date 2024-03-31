@@ -27,7 +27,7 @@ public class CartService {
      * @param cartSkuList
      * @return
      */
-    public List<Sku> filterElectronicsSkus(List<Sku> cartSkuList) {
+    public static List<Sku> filterElectronicsSkus(List<Sku> cartSkuList) {
         List<Sku> result = new ArrayList<Sku>();
         for (Sku sku:cartSkuList             ) {
             if (SkuCategoryEnum.ELECTRONICS.equals(sku.getSkuCategory())) {
