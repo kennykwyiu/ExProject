@@ -82,7 +82,7 @@ public class CartService {
      * @param predicate
      * @return
      */
-    public  List<Sku> filterSkus(List<Sku> cartSkuList, SkuPredicate predicate) {
+    public static List<Sku> filterSkus(List<Sku> cartSkuList, SkuPredicate predicate) {
         List<Sku> result = new ArrayList<Sku>();
         for (Sku sku:cartSkuList) {
             if (predicate.test(sku)) {
