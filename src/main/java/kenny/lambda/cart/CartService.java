@@ -76,4 +76,20 @@ public class CartService {
         return result;
     }
 
+    /**
+     * Version 4.0.0
+     * @param cartSkuList
+     * @param predicate
+     * @return
+     */
+    public  List<Sku> filterSkus(List<Sku> cartSkuList, SkuPredicate predicate) {
+        List<Sku> result = new ArrayList<Sku>();
+        for (Sku sku:cartSkuList) {
+            if (predicate.test(sku)) {
+                result.add(sku);
+            }
+        }
+        return result;
+    }
+
 }
