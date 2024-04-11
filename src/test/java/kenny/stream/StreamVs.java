@@ -9,6 +9,8 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
+import java.util.stream.Collectors;
 
 public class StreamVs {
 
@@ -67,6 +69,29 @@ public class StreamVs {
 
         System.out.println(JSON.toJSONString(resultSkuNameList, true));
         System.out.println("Total product price: " + money);
+    }
+
+    // by using Stream
+    @Test
+    public void newCartHandle() {
+        AtomicReference<Double> money = new AtomicReference<>(Double.valueOf(0.0));
+
+        List<String> resultSkuNameList = CartService.getCartSkuList()
+                .stream()
+                // 1
+                .peek(sku -> System.out.println(JSON.toJSONString(sku, true)))
+                // 2
+                .filter(sku -> !SkuCategoryEnum.BOOKS.equals(sku.getSkuCategory()))
+                // 3
+                .sorted(Comparator.comparing(Sku::getTotalPrice).reversed())
+                // 4
+                .limit(2)
+                .peek(sku -> money.set(money.get() + sku.getTotalPrice()))
+                .map(sku -> sku.getSkuName())
+                .collect(Collectors.toList());
+
+        System.out.println(JSON.toJSONString(resultSkuNameList, true));
+        System.out.println("Total product price: " + money.get());
     }
 
 }
