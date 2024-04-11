@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import kenny.lambda.cart.CartService;
 import kenny.lambda.cart.Sku;
 import kenny.lambda.cart.SkuCategoryEnum;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -19,12 +20,15 @@ public class StreamVs {
      */
 
     // use collection
+    @Test
     public void oldCartHandle() {
+        // 1
         List<Sku> cartSkuList = CartService.getCartSkuList();
         for (Sku sku : cartSkuList) {
             System.out.println(JSON.toJSONString(sku, true));
         }
 
+        // 2
         List<Sku> notBooksSkuList = new ArrayList<>();
         for (Sku sku : cartSkuList) {
             if (!SkuCategoryEnum.BOOKS.equals(sku.getSkuCategory())) {
@@ -32,6 +36,7 @@ public class StreamVs {
             }
         }
 
+        // 3
         notBooksSkuList.sort(new Comparator<Sku>() {
             @Override
             public int compare(Sku o1, Sku o2) {
@@ -43,6 +48,25 @@ public class StreamVs {
                 return 0;
             }
         });
+
+        List<Sku> top2SkuList = new ArrayList<>();
+        for (int i = 0; i < 2; i++) {
+            top2SkuList.add(notBooksSkuList.get(i));
+        }
+
+        // 4
+        Double money = 0.0;
+        for (Sku sku : top2SkuList) {
+            money += sku.getTotalPrice();
+        }
+
+        List<String> resultSkuNameList = new ArrayList<>();
+        for (Sku sku : top2SkuList) {
+            resultSkuNameList.add(sku.getSkuName());
+        }
+
+        System.out.println(JSON.toJSONString(resultSkuNameList, true));
+        System.out.println("Total product price: " + money);
     }
 
 }
