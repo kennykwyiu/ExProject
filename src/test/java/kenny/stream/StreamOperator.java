@@ -24,4 +24,13 @@ public class StreamOperator {
                 .filter(sku -> SkuCategoryEnum.BOOKS.equals(sku.getSkuCategory()))
                 .forEach(x -> System.out.println(JSON.toJSONString(x, true)));
     }
+
+    // change the return type
+    @Test
+    public void mapTest() {
+        list.stream()
+                .map(sku -> sku.getSkuName())
+                .forEach(x -> System.out.println(JSON.toJSONString(x, true)));
+
+    }
 }
