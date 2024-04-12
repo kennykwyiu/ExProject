@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 public class StreamOperator {
@@ -45,6 +46,13 @@ public class StreamOperator {
     public void peek(){
         list.stream()
                 .peek(sku -> System.out.println(sku.getSkuName()) )
+                .forEach(x -> System.out.println(JSON.toJSONString(x, true)));
+    }
+
+    @Test
+    public void sortTest(){
+        list.stream()
+                .sorted(Comparator.comparing(Sku::getTotalPrice))
                 .forEach(x -> System.out.println(JSON.toJSONString(x, true)));
     }
 }
