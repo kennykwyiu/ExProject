@@ -52,7 +52,16 @@ public class StreamOperator {
     @Test
     public void sortTest(){
         list.stream()
+                .peek(sku -> System.out.println(sku.getSkuName()) )
                 .sorted(Comparator.comparing(Sku::getTotalPrice))
+                .forEach(x -> System.out.println(JSON.toJSONString(x, true)));
+    }
+
+    @Test
+    public void distinctTest() {
+        list.stream()
+                .map(sku -> sku.getSkuCategory())
+                .distinct()
                 .forEach(x -> System.out.println(JSON.toJSONString(x, true)));
     }
 }
