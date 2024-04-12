@@ -7,6 +7,7 @@ import kenny.lambda.cart.SkuCategoryEnum;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class StreamOperator {
@@ -31,6 +32,12 @@ public class StreamOperator {
         list.stream()
                 .map(sku -> sku.getSkuName())
                 .forEach(x -> System.out.println(JSON.toJSONString(x, true)));
+    }
 
+    @Test
+    public void flatMapTest() {
+        list.stream()
+                .flatMap(sku -> Arrays.stream(sku.getSkuName().split("")))
+                .forEach(x -> System.out.println(JSON.toJSONString(x, true)));
     }
 }
