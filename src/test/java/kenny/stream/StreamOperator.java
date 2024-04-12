@@ -40,4 +40,11 @@ public class StreamOperator {
                 .flatMap(sku -> Arrays.stream(sku.getSkuName().split("")))
                 .forEach(x -> System.out.println(JSON.toJSONString(x, true)));
     }
+
+    @Test
+    public void peek(){
+        list.stream()
+                .peek(sku -> System.out.println(sku.getSkuName()) )
+                .forEach(x -> System.out.println(JSON.toJSONString(x, true)));
+    }
 }
