@@ -72,4 +72,12 @@ public class StreamOperator {
                 .skip(3)
                 .forEach(x -> System.out.println(JSON.toJSONString(x, true)));
     }
+
+    @Test
+    public void limitTest() {
+        list.stream()
+                .sorted(Comparator.comparing(Sku::getTotalPrice))
+                .limit(3)
+                .forEach(x -> System.out.println(JSON.toJSONString(x, true)));
+    }
 }
