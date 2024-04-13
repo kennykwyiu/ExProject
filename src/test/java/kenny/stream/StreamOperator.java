@@ -110,7 +110,16 @@ public class StreamOperator {
     @Test
     public void findFirstTest() {
         Optional<Sku> optionalSku = list.stream()
+                .peek(sku -> System.out.println(sku.getSkuName()))
                 .findFirst();
+        System.out.println(JSON.toJSONString(optionalSku.get(), true));
+    }
+
+    @Test
+    public void findAnyTest() {
+        Optional<Sku> optionalSku = list.stream()
+                .peek(sku -> System.out.println(sku.getSkuName()))
+                .findAny();
         System.out.println(JSON.toJSONString(optionalSku.get(), true));
     }
 }
