@@ -98,4 +98,11 @@ public class StreamOperator {
         System.out.println(match);
     }
 
+    @Test
+    public void noneMatchTest() {
+        boolean match = list.stream()
+                .peek(sku -> System.out.println(sku.getSkuName()))
+                .noneMatch(sku -> sku.getTotalPrice() > 10_000);
+        System.out.println(match);
+    }
 }
