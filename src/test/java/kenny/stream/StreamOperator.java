@@ -43,16 +43,16 @@ public class StreamOperator {
     }
 
     @Test
-    public void peek(){
+    public void peek() {
         list.stream()
-                .peek(sku -> System.out.println(sku.getSkuName()) )
+                .peek(sku -> System.out.println(sku.getSkuName()))
                 .forEach(x -> System.out.println(JSON.toJSONString(x, true)));
     }
 
     @Test
-    public void sortTest(){
+    public void sortTest() {
         list.stream()
-                .peek(sku -> System.out.println(sku.getSkuName()) )
+                .peek(sku -> System.out.println(sku.getSkuName()))
                 .sorted(Comparator.comparing(Sku::getTotalPrice))
                 .forEach(x -> System.out.println(JSON.toJSONString(x, true)));
     }
@@ -77,8 +77,16 @@ public class StreamOperator {
     public void limitTest() {
         list.stream()
                 .sorted(Comparator.comparing(Sku::getTotalPrice))
-                .skip( 1 * 3 )
+                .skip(1 * 3)
                 .limit(3)
                 .forEach(x -> System.out.println(JSON.toJSONString(x, true)));
+    }
+
+    @Test
+    public void allMatchTest() {
+        boolean match = list.stream()
+                .peek(sku -> System.out.println(sku.getSkuName()))
+                .allMatch(sku -> sku.getTotalPrice() > 100);
+        System.out.println(match);
     }
 }
