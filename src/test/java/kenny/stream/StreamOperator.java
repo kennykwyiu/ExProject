@@ -10,6 +10,7 @@ import org.junit.Test;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 
 public class StreamOperator {
 
@@ -104,5 +105,12 @@ public class StreamOperator {
                 .peek(sku -> System.out.println(sku.getSkuName()))
                 .noneMatch(sku -> sku.getTotalPrice() > 10_000);
         System.out.println(match);
+    }
+
+    @Test
+    public void findFirstTest() {
+        Optional<Sku> optionalSku = list.stream()
+                .findFirst();
+        System.out.println(JSON.toJSONString(optionalSku.get(), true));
     }
 }
