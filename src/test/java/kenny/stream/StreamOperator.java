@@ -89,4 +89,13 @@ public class StreamOperator {
                 .allMatch(sku -> sku.getTotalPrice() > 100);
         System.out.println(match);
     }
+
+    @Test
+    public void anyMatchTest() {
+        boolean match = list.stream()
+                .peek(sku -> System.out.println(sku.getSkuName()))
+                .anyMatch(sku -> sku.getTotalPrice() > 100);
+        System.out.println(match);
+    }
+
 }
