@@ -123,3 +123,4 @@ public class StreamOperator {
         System.out.println(JSON.toJSONString(optionalSku.get(), true));
     }
 }
+
