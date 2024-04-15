@@ -127,5 +127,15 @@ public class StreamOperator {
                 .max();
         System.out.println(optionalDouble.getAsDouble());
     }
+
+    @Test
+    public void minTest() {
+        OptionalDouble optionalDouble = list.stream()
+                .mapToDouble(Sku::getTotalPrice)
+                .min();
+        System.out.println(optionalDouble.getAsDouble());
+    }
+
+
 }
 
