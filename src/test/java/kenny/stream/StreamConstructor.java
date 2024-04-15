@@ -29,4 +29,10 @@ public class StreamConstructor {
         stream.forEach(System.out::println);
     }
 
+    @Test
+    public void streamFromFunction() {
+//        Stream<Integer> stream = Stream.iterate(0, n -> n + 2);
+        Stream<Double> stream = Stream.generate(Math::random);
+        stream.limit(100).forEach(System.out::println);
+    }
 }
