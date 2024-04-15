@@ -7,10 +7,7 @@ import kenny.lambda.cart.SkuCategoryEnum;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 public class StreamOperator {
 
@@ -121,6 +118,14 @@ public class StreamOperator {
                 .peek(sku -> System.out.println(sku.getSkuName()))
                 .findAny();
         System.out.println(JSON.toJSONString(optionalSku.get(), true));
+    }
+
+    @Test
+    public void maxTest() {
+        OptionalDouble optionalDouble = list.stream()
+                .mapToDouble(Sku::getTotalPrice)
+                .max();
+        System.out.println(optionalDouble.getAsDouble());
     }
 }
 
