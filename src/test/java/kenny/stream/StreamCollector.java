@@ -34,4 +34,11 @@ public class StreamCollector {
         System.out.println(JSON.toJSONString(group, true));
     }
 
+    @Test
+    public void partition() {
+        Map<Boolean, List<Sku>> partition = list.stream()
+                .collect(Collectors.partitioningBy(sku -> sku.getTotalPrice() > 100));
+        System.out.println(JSON.toJSONString(partition, true));
+
+    }
 }
