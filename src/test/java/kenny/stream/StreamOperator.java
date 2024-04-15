@@ -136,6 +136,11 @@ public class StreamOperator {
         System.out.println(optionalDouble.getAsDouble());
     }
 
-
+    @Test
+    public void countTest() {
+        long count = list.stream()
+                .count();
+        System.out.println(count);
+    }
 }
 
