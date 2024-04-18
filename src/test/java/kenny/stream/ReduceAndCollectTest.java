@@ -66,6 +66,7 @@ public class ReduceAndCollectTest {
         list.add(new Order(3, "Liz", 3, 23332.12));
 
         HashMap<String, Order> collect = list.stream()
+                .parallel()
                 .collect(
                         () -> {
                             System.out.println("execute collect stream!!!");
