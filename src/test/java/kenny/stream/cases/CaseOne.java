@@ -1,5 +1,6 @@
 package kenny.stream.cases;
 
+import com.alibaba.fastjson.JSON;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.junit.Before;
@@ -84,6 +85,7 @@ public class CaseOne {
     public void findStudent() {
         studentMap.forEach((studentName, scoreList) -> {
             boolean isNull = scoreList.stream().anyMatch(score -> {
+                System.out.println(JSON.toJSONString(score, true));
                 return score.getScoreValue() == null;
             });
 
