@@ -31,17 +31,17 @@ public class CaseThree {
 
         Role adminRole = new Role();
         List<Permission> adminPermissionList = Lists.newArrayList(
-                new Permission("删除"),
-                new Permission("查看"),
-                new Permission("导出"));
+                new Permission("remove"),
+                new Permission("check"),
+                new Permission("export"));
         adminRole.setPermissions(adminPermissionList);
 
         Role userRole = new Role();
         List<Permission> userPermissionList = Lists.newArrayList(
-                new Permission("新建"),
-                new Permission("修改"),
-                new Permission("删除"),
-                new Permission("查看"));
+                new Permission("create"),
+                new Permission("amend"),
+                new Permission("remove"),
+                new Permission("check"));
         userRole.setPermissions(userPermissionList);
 
         roleList.add(adminRole);
