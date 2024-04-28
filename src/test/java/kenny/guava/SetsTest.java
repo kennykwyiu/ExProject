@@ -1,5 +1,6 @@
 package kenny.guava;
 
+import com.alibaba.fastjson.JSON;
 import com.google.common.collect.Sets;
 import org.junit.Test;
 
@@ -25,6 +26,16 @@ public class SetsTest {
         Set<Integer> set = Sets.difference(set1, set2);
 
         System.out.println(set);
+    }
+
+    @Test
+    public void powerSet() {
+        Set<Set<Integer>> set = Sets.powerSet(set1);
+        System.out.println(set);
+
+        Set<Set<Integer>> powerSet = Sets.powerSet(set1);
+
+        System.out.println(JSON.toJSONString(powerSet));
     }
 
 }
