@@ -41,4 +41,10 @@ public class SetsTest {
         System.out.println(JSON.toJSONString(powerSet));
     }
 
+    @Test
+    public void cartesianProduct() {
+        Set set = Sets.cartesianProduct(set1, set2);
+        System.out.println(set);
+        System.out.println(JSON.toJSONString(set));
+    }
 }
