@@ -16,4 +16,15 @@ public class SetsTest {
         System.out.println(set);
     }
 
+    @Test
+    public void difference() {
+        Sets.SetView difference = Sets.difference(set1, set2);
+
+        System.out.println(difference);
+
+        Set<Integer> set = Sets.difference(set1, set2);
+
+        System.out.println(set);
+    }
+
 }
