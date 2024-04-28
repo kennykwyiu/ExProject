@@ -26,6 +26,9 @@ public class SetsTest {
         Set<Integer> set = Sets.difference(set1, set2);
 
         System.out.println(set);
+
+        set = Sets.symmetricDifference(set1, set2);
+        System.out.println(set);
     }
 
     @Test
