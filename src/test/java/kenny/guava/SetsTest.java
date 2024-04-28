@@ -6,6 +6,7 @@ import com.google.common.collect.Sets;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
@@ -56,6 +57,17 @@ public class SetsTest {
         List<Integer> list = Lists.newArrayList(1, 2, 3, 4, 5, 6, 7);
         List<List<Integer>> partition = Lists.partition(list, 3);
         System.out.println(JSON.toJSONString(partition));
+    }
+
+    @Test
+    public void reverse() {
+        LinkedList<Integer> list = Lists.newLinkedList();
+        list.add(1);
+        list.add(2);
+        list.add(3);
+
+        List<Integer> reverse = Lists.reverse(list);
+        System.out.println(reverse);
     }
 
 }
