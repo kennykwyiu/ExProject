@@ -13,8 +13,8 @@ public class IOTest {
 
     @Test
     public void copyFile() throws IOException {
-        CharSource charSource = Files.asCharSource(new File("SourceText.txt"), Charsets.UTF_8);
-        CharSink charSink = Files.asCharSink(new File("TargetText.txt"), Charsets.UTF_8);
+        CharSource charSource = Files.asCharSource(new File(""), Charsets.UTF_8);
+        CharSink charSink = Files.asCharSink(new File(""), Charsets.UTF_8);
 
         charSource.copyTo(charSink);
     }
